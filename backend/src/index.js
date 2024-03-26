@@ -10,11 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use("/api/test", async (req, res) => {
-  res.json({ message: "hello from express endpoint" });
-});
-
-app.use("/api/user", userRouter);
+app.use("/api/users", userRouter);
 
 app.listen(3000, () => {
   try {
