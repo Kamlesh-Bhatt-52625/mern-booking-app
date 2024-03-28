@@ -1,7 +1,12 @@
 import { useForm } from "react-hook-form";
 
 const Register = () => {
-  const { register, watch, handleSubmit } = useForm();
+  const {
+    register,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
@@ -18,6 +23,9 @@ const Register = () => {
             className="border rounded w-full py-3 px-2 font-normal"
             {...register("firstName", { required: "This feild is required" })}
           />
+          {errors.firstName && (
+            <span className="text-red-500">{errors.firstName.message}</span>
+          )}
         </label>
 
         <label htmlFor="" className="text-gray-700 text-sm font-bold flex-1">
@@ -27,6 +35,9 @@ const Register = () => {
             className="border rounded w-full py-3 px-2 font-normal"
             {...register("lastName", { required: "This feild is required" })}
           />
+          {errors.lastName && (
+            <span className="text-red-500">{errors.lastName.message}</span>
+          )}
         </label>
       </div>
 
@@ -37,6 +48,9 @@ const Register = () => {
           className="border rounded w-full py-3 px-2 font-normal"
           {...register("email", { required: "This feild is required" })}
         />
+        {errors.email && (
+          <span className="text-red-500">{errors.email.message}</span>
+        )}
       </label>
       <label htmlFor="" className="text-gray-700 text-sm font-bold flex-1">
         Password
@@ -51,6 +65,9 @@ const Register = () => {
             },
           })}
         />
+        {errors.password && (
+          <span className="text-red-500">{errors.password.message}</span>
+        )}
       </label>
       <label htmlFor="" className="text-gray-700 text-sm font-bold flex-1">
         Confirm Password
@@ -67,6 +84,9 @@ const Register = () => {
             },
           })}
         />
+        {errors.confirmPassword && (
+          <span className="text-red-500">{errors.confirmPassword.message}</span>
+        )}
       </label>
 
       <span className="">
