@@ -1,8 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import * as apiClient from "../api-client";
+import { useAppContext } from "../contexts/AppContext";
 
 const Register = () => {
+  const { showToast } = useAppContext();
+
   const {
     register,
     watch,
@@ -12,10 +15,10 @@ const Register = () => {
 
   const mutation = useMutation(apiClient.register, {
     onSuccess: () => {
-      console.log("registration Successfull");
+      showToast({ message: "Registration Success!", type: "SUCCESS" });
     },
     onError: (err) => {
-      console.log(err.message);
+      showToast({ message: err.message, type: "ERROR" });
     },
   });
 
