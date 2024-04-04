@@ -8,7 +8,7 @@ const Register = () => {
   const navigate = useNavigate();
   const { showToast } = useAppContext();
 
-  const {
+  const { 
     register,
     watch,
     handleSubmit,
